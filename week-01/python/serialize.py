@@ -34,11 +34,19 @@ def read():
         with open(FILENAME) as file_handle:
             personal_info = json.load(file_handle)
 
-        print(personal_info)
+        indented_personal_info = json.dumps(personal_info, indent=3)
+        print(indented_personal_info)
     
     except Exception as e:
         print(f"Something went wrong, Information did not read. {e}")
 
+def menu():
+    choice = input("Would you like to Write (W) or Read (R) the info: ")
+
+    if choice.upper() == "W":
+        write()
+    else:
+        read()
+
 if __name__ == "__main__":
-    write()
-    read()
+    menu()
